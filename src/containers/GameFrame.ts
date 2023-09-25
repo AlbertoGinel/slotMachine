@@ -49,18 +49,25 @@ export class GameFrame extends Container {
 
     buttonSpin.interactive = true;  // This makes the button interactive
 
-    buttonSpin.on("click", () => {
+
+    buttonSpin.on("click", handleInteraction, this);
+    buttonSpin.on("tap", handleInteraction, this);
+
+    function handleInteraction(this: any) {
       // Call the handleButton() method.
       this.handleButton();
 
-      // Make the button non-interactive immediately after it's clicked.
+      // Make the button non-interactive immediately after it's clicked/tapped.
       buttonSpin.interactive = false;  // This makes the button non-interactive
 
       // Use setTimeout to make the button interactive again after 10 seconds.
       setTimeout(() => {
         buttonSpin.interactive = true;  // Make it interactive again after the timeout
       }, 10000); // 10000 milliseconds = 10 seconds
-    }, this);
+    }
+
+
+
   }
 
   private handleButton(): void {

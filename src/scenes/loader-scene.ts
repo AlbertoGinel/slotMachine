@@ -13,7 +13,7 @@ export class LoaderScene extends Container implements IScene {
         const loaderBarWidth = 280;
         this._loadingBar = new LoadingBarContainer(loaderBarWidth, SceneManager.width, SceneManager.height);
 
-        this.addChild(this._loadingBar);
+        this.addChild(this._loadingBar as any);
         this.initLoader().then(() => {
             this.loaded();
         });
@@ -30,14 +30,14 @@ export class LoaderScene extends Container implements IScene {
     }
 
     private loaded(): void {
-        SceneManager.changeScene(new GameScene(SceneManager.width, SceneManager.height))
+        SceneManager.changeScene(new GameScene(SceneManager.width, SceneManager.height) as any)
     }
 
-    update(framesPassed: number): void {
+    update(_framesPassed: number): void {
         //...
     }
 
-    resize(parentWidth: number, parentHeight: number): void {
+    resize(_parentWidth: number, _parentHeight: number): void {
         //...
     }
 }

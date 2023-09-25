@@ -18,25 +18,25 @@ export class LoadingBarContainer extends Container {
         const lineColor = 0x000000;
         const lineOpacity = 0;
         this._loaderBarBorder.lineStyle(lineWidth, lineColor, lineOpacity);
-        
+
         const barPosX = 0;
         const barPosY = 0;
         this._loaderBarBorder.drawRect(barPosX, barPosY, this._barWidth + 6, this._barHeight);
 
         this._loaderBar = new Container();
-        this._loaderBar.addChild(this._loaderBarBorder);
+        this._loaderBar.addChild(this._loaderBarBorder as any);
         this._loaderBar.position.x = (parentWidth - this._loaderBar.width) / 2;
         this._loaderBar.position.y = (parentHeight - this._loaderBar.height) / 2;
-        this.addChild(this._loaderBar);
+        this.addChild(this._loaderBar as any);
     }
 
     public scaleProgress(progress: number) {
         if (this._loaderProgress) {
-            this._loaderBar.removeChild(this._loaderProgress);
+            this._loaderBar.removeChild(this._loaderProgress as any);
             this._loaderProgress.destroy();
         }
         this._loaderProgress = this.makeRect(progress);
-        this._loaderBar.addChild(this._loaderProgress);
+        this._loaderBar.addChild(this._loaderProgress as any);
     }
 
     resize(width: number, height: number) {
@@ -50,24 +50,24 @@ export class LoadingBarContainer extends Container {
      * @returns rect:Graphics - drawing objects of pixi that fill the bar
      */
     private makeRect(progress: number): Graphics {
-        const percentLines = Math.floor((progress*100)/10);
+        const percentLines = Math.floor((progress * 100) / 10);
         const padding = 6;
-        const pieceWidth = this._barWidth/10 - padding;
+        const pieceWidth = this._barWidth / 10 - padding;
         const rect = new Graphics();
 
         //rect dimentions
-        const rectPositionX = (i:number) => padding*(i+1) + pieceWidth*i;
+        const rectPositionX = (i: number) => padding * (i + 1) + pieceWidth * i;
         const rectPositionY = padding;
         const rectWidth = pieceWidth;
-        const rectHeight = this._barHeight - 2*padding;
+        const rectHeight = this._barHeight - 2 * padding;
 
         // fill loading bar
         for (let i = 0; i < percentLines; ++i) {
-            rect.beginFill(0xffff00 - i*0x001100, 1);
+            rect.beginFill(0xffff00 - i * 0x001100, 1);
             rect.drawRect(
-                rectPositionX(i), 
-                rectPositionY, 
-                rectWidth, 
+                rectPositionX(i),
+                rectPositionY,
+                rectWidth,
                 rectHeight
             );
             rect.endFill();

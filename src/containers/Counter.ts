@@ -1,10 +1,10 @@
-import { Container, Sprite, BitmapText, BitmapFont, Assets } from "pixi.js";
+import { Container, Sprite, BitmapText, BitmapFont, DisplayObject } from "pixi.js";
 
 export class Counter extends Container {
 
   private containerWidth: number;
   private containerHeight: number;
-  private containerScale: number;
+  //private containerScale: number;
   private containerX: number;
   private containerY: number;
 
@@ -13,11 +13,11 @@ export class Counter extends Container {
   private bitmapText: BitmapText;
 
 
-  constructor(containerWidth: number, containerHeight: number, containerScale: number, containerX: number, containerY: number) {
+  constructor(containerWidth: number, containerHeight: number, containerX: number, containerY: number) {
     super();
     this.containerWidth = containerWidth;
     this.containerHeight = containerHeight;
-    this.containerScale = containerScale;
+    //this.containerScale = containerScale;
     this.containerX = containerX;
     this.containerY = containerY;
 
@@ -54,7 +54,7 @@ export class Counter extends Container {
     this.bitmapText.position.set(this.containerX, this.containerY + (this.containerHeight * 0.395));
 
 
-    this.addChild(this.CounterImage, this.bitmapText);
+    this.addChild(this.CounterImage as Sprite & DisplayObject, this.bitmapText as BitmapText & DisplayObject);
 
   }
 
@@ -81,11 +81,3 @@ export class Counter extends Container {
   }
 
 }
-
-
-//Win: \n USD 500,000.00
-
-
-
-
-

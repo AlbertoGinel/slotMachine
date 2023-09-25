@@ -1,4 +1,4 @@
-import { Container, Sprite } from "pixi.js";
+import { Container, Sprite, DisplayObject } from "pixi.js";
 import { GameFrame } from "./GameFrame";
 
 export class Background extends Container {
@@ -24,10 +24,10 @@ export class Background extends Container {
     this.backgroundImage.anchor.set(0.5, 0.5);
     this.backgroundImage.position.set(this.containerWidth / 2, this.containerHeight / 2);
 
-    const frame = new GameFrame(containerWidth, containerHeight, criticalScale, this.containerWidth / 2, this.containerHeight / 2);
+    const frame = new GameFrame(containerWidth, containerHeight, this.containerWidth / 2, this.containerHeight / 2);
 
 
-    this.addChild(this.backgroundImage, frame);
+    this.addChild(this.backgroundImage as Sprite & DisplayObject, frame as GameFrame & DisplayObject);
   }
 
 }

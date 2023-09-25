@@ -1,4 +1,6 @@
-import { Assets, BitmapFont, Container, Sprite } from 'pixi.js';
+import {
+    Assets, Container
+} from 'pixi.js';
 import { IScene } from '../shared/scene-manager';
 import { Background } from '../containers/Background';
 
@@ -17,7 +19,7 @@ export class GameScene extends Container implements IScene {
         const backgroundImage = new Background(this.containerWidth, this.containerHeight);
 
 
-        this.addChild(backgroundImage);
+        this.addChild(backgroundImage as any);
 
         async function loadFonts() {
             await Assets.load({
@@ -30,20 +32,12 @@ export class GameScene extends Container implements IScene {
 
     }
 
-    update(framesPassed: number): void {
+    update(_framesPassed: number): void {
 
     }
 
-    resize(parentWidth: number, parentHeight: number): void {
-        //
-        // this._viteLogo.position.x = parentWidth / 2 - 120;
-        // this._viteLogo.position.y = parentHeight / 2;
+    resize(_parentWidth: number, _parentHeight: number): void {
 
-        // this._pixiLogo.position.x = parentWidth / 2;
-        // this._pixiLogo.position.y = parentHeight / 2;
-
-        // this._tsLogo.position.x = parentWidth / 2 + 120;
-        // this._tsLogo.position.y = parentHeight / 2;
     }
 
 

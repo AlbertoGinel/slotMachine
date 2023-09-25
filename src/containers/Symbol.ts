@@ -4,17 +4,15 @@ export class Symbol extends Container {
 
   private containerWidth: number;
   private containerHeight: number;
-  private containerScale: number;
   private containerX: number;
   private containerY: number;
 
   private symbolImage: Sprite;
 
-  constructor(containerWidth: number, containerHeight: number, containerScale: number, containerX: number, containerY: number) {
+  constructor(containerWidth: number, containerHeight: number, containerX: number, containerY: number) {
     super();
     this.containerWidth = containerWidth;
     this.containerHeight = containerHeight;
-    this.containerScale = containerScale;
     this.containerX = containerX;
     this.containerY = containerY;
 
@@ -28,10 +26,10 @@ export class Symbol extends Container {
 
     //center of the screen
     this.symbolImage.anchor.set(0.5, 0.5);
-    this.symbolImage.position.set(containerX, containerY);
+    this.symbolImage.position.set(this.containerX, this.containerY);
 
 
-    this.addChild(this.symbolImage);
+    this.addChild(this.symbolImage as any);
 
     this.changeSymbol('');
 

@@ -1,6 +1,8 @@
-import { Application, DisplayObject } from "pixi.js";
+import { Application } from "pixi.js";
 import { Stage, Layer } from "@pixi/layers";
 import { diffuseGroup, normalGroup, lightGroup } from "@pixi/lights";
+
+
 
 export class SceneManager {
     //class is almost will be static
@@ -27,27 +29,30 @@ export class SceneManager {
 
 
         //Debug
-        globalThis.__PIXI_APP__ = SceneManager._app;
+        (globalThis as any).__PIXI_APP__ = SceneManager._app;
+
+
 
         SceneManager._app.stage = new Stage();
         SceneManager._app.stage.addChild(
-            new Layer(diffuseGroup),
-            new Layer(normalGroup),
-            new Layer(lightGroup)
+            new Layer(diffuseGroup) as any,
+            new Layer(normalGroup) as any,
+            new Layer(lightGroup) as any
         );
+
         SceneManager._app.ticker.add(SceneManager.update);
         window.addEventListener("resize", SceneManager.resize);
     }
 
     public static changeScene(newScene: IScene): void {
         if (SceneManager._currentScene) {
-            SceneManager._app.stage.removeChild(SceneManager._currentScene);
-            SceneManager._currentScene.destroy();
+            SceneManager._app.stage.removeChild(SceneManager._currentScene as any);
+            //SceneManager._currentScene.destroy();
         }
 
         // Add the new one
         SceneManager._currentScene = newScene;
-        SceneManager._app.stage.addChild(SceneManager._currentScene);
+        SceneManager._app.stage.addChild(SceneManager._currentScene as any);
     }
 
     private static update(framesPassed: number): void {
@@ -64,7 +69,8 @@ export class SceneManager {
     }
 }
 
-export interface IScene extends DisplayObject {
+export interface IScene {
+    //children: DisplayObject[];
     update(framesPassed: number): void;
     // we added the resize method to the interface
     resize(screenWidth: number, screenHeight: number): void;

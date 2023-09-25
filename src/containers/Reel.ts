@@ -6,7 +6,6 @@ export class Reel extends Container {
 
   private containerWidth: number;
   private containerHeight: number;
-  private containerScale: number;
   private containerX: number;
   private containerY: number;
 
@@ -19,11 +18,10 @@ export class Reel extends Container {
 
   private masterTimeline: gsap.core.Timeline = gsap.timeline();
 
-  constructor(containerWidth: number, containerHeight: number, containerScale: number, containerX: number, containerY: number) {
+  constructor(containerWidth: number, containerHeight: number, containerX: number, containerY: number) {
     super();
     this.containerWidth = containerWidth;
     this.containerHeight = containerHeight;
-    this.containerScale = containerScale;
     this.containerX = containerX;
     this.containerY = containerY;
 
@@ -34,18 +32,18 @@ export class Reel extends Container {
     const verticalRatio = this.containerHeight / this.debugReelImage.height;
     const criticalScale = Math.min(horizontalRatio, verticalRatio);
 
-    this.debugReelImage.scale.set(criticalScale * containerScale);
+    this.debugReelImage.scale.set(criticalScale * 0.78);
 
     //center of the screen
     this.debugReelImage.anchor.set(0.5, 0.5);
     this.debugReelImage.position.set(containerX, containerY);
 
-    this.symbol0 = new Symbol(this.containerWidth, this.containerHeight, 1, this.containerX, this.containerY - (this.containerHeight * 0.5));
-    this.symbol1 = new Symbol(this.containerWidth, this.containerHeight, 1, this.containerX, this.containerY - (this.containerHeight * 0.25));
-    this.symbol2 = new Symbol(this.containerWidth, this.containerHeight, 1, this.containerX, this.containerY);
-    this.symbol3 = new Symbol(this.containerWidth, this.containerHeight, 1, this.containerX, this.containerY + (this.containerHeight * 0.25));
+    this.symbol0 = new Symbol(this.containerWidth, this.containerHeight, this.containerX, this.containerY - (this.containerHeight * 0.5));
+    this.symbol1 = new Symbol(this.containerWidth, this.containerHeight, this.containerX, this.containerY - (this.containerHeight * 0.25));
+    this.symbol2 = new Symbol(this.containerWidth, this.containerHeight, this.containerX, this.containerY);
+    this.symbol3 = new Symbol(this.containerWidth, this.containerHeight, this.containerX, this.containerY + (this.containerHeight * 0.25));
 
-    this.addChild(this.debugReelImage, this.symbol1, this.symbol2, this.symbol3, this.symbol0);
+    this.addChild(this.debugReelImage as any, this.symbol1, this.symbol2, this.symbol3, this.symbol0);
 
     //mask the reel
 
@@ -53,7 +51,7 @@ export class Reel extends Container {
     mask.beginFill(0xFFFFFF);
     mask.drawRect(this.debugReelImage.x - this.debugReelImage.width / 2, this.debugReelImage.y - this.debugReelImage.height / 2, this.debugReelImage.width, this.debugReelImage.height); // Draw a circle at (400, 300) with a radius of 150
     mask.endFill();
-    this.addChild(mask);
+    this.addChild(mask as any);
     this.mask = mask;
 
 

@@ -4,7 +4,7 @@ import { diffuseGroup, normalGroup, lightGroup } from "@pixi/lights";
 
 export class SceneManager {
     //class is almost will be static
-    private constructor() {};
+    private constructor() { };
     private static _app: Application;
     private static _currentScene: IScene;
 
@@ -20,10 +20,14 @@ export class SceneManager {
         SceneManager._app = new Application({
             view: document.getElementById("pixi-screen") as HTMLCanvasElement,
             resizeTo: window,
-	        resolution: window.devicePixelRatio || 1,
+            resolution: window.devicePixelRatio || 1,
             autoDensity: true,
             backgroundColor: background,
         });
+
+
+        //Debug
+        globalThis.__PIXI_APP__ = SceneManager._app;
 
         SceneManager._app.stage = new Stage();
         SceneManager._app.stage.addChild(

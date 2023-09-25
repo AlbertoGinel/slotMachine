@@ -1,54 +1,50 @@
-import { Container, Sprite } from 'pixi.js';
+import { Assets, BitmapFont, Container, Sprite } from 'pixi.js';
 import { IScene } from '../shared/scene-manager';
+import { Background } from '../containers/Background';
+
 
 export class GameScene extends Container implements IScene {
     //you can  remove all of this variable
-    private _viteLogo: Sprite;
-    private _tsLogo: Sprite;
-    private _pixiLogo: Sprite;
+    private containerWidth: number;
+    private containerHeight: number;
 
     constructor(parentWidth: number, parentHeight: number) {
         super();
 
-        //you can remove all of this code
-        //initialize sprites
-        this._viteLogo = Sprite.from("vite-logo");
-        this._viteLogo.anchor.set(0.5);
-        this._viteLogo.width = 50;
-        this._viteLogo.height = 50;
-        this._viteLogo.position.x = parentWidth/2 - 120;
-        this._viteLogo.position.y = parentHeight/2;
+        this.containerWidth = parentWidth;
+        this.containerHeight = parentHeight;
 
-        this._pixiLogo = Sprite.from("pixi-logo");
-        this._pixiLogo.anchor.set(0.5);
-        this._pixiLogo.width = 128;
-        this._pixiLogo.height = 50;
-        this._pixiLogo.position.x = parentWidth/2;
-        this._pixiLogo.position.y = parentHeight/2;
+        const backgroundImage = new Background(this.containerWidth, this.containerHeight);
 
-        this._tsLogo = Sprite.from("ts-logo");
-        this._tsLogo.anchor.set(0.5);
-        this._tsLogo.width = 50;
-        this._tsLogo.height = 50;
-        this._tsLogo.position.x = parentWidth/2 + 120;
-        this._tsLogo.position.y = parentHeight/2;
 
-        this.addChild(this._viteLogo, this._tsLogo, this._pixiLogo);
+        this.addChild(backgroundImage);
+
+        async function loadFonts() {
+            await Assets.load({
+                data: { family: 'Space Grotesk' },
+                src: 'https://fonts.gstatic.com/s/spacegrotesk/v15/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMBBSSJLm2E.woff2'
+            });
+        }
+
+        loadFonts()
+
     }
 
     update(framesPassed: number): void {
-        
+
     }
 
     resize(parentWidth: number, parentHeight: number): void {
         //
-        this._viteLogo.position.x = parentWidth/2 - 120;
-        this._viteLogo.position.y = parentHeight/2;
+        // this._viteLogo.position.x = parentWidth / 2 - 120;
+        // this._viteLogo.position.y = parentHeight / 2;
 
-        this._pixiLogo.position.x = parentWidth/2;
-        this._pixiLogo.position.y = parentHeight/2;
+        // this._pixiLogo.position.x = parentWidth / 2;
+        // this._pixiLogo.position.y = parentHeight / 2;
 
-        this._tsLogo.position.x = parentWidth/2 + 120;
-        this._tsLogo.position.y = parentHeight/2;
+        // this._tsLogo.position.x = parentWidth / 2 + 120;
+        // this._tsLogo.position.y = parentHeight / 2;
     }
+
+
 }

@@ -50,10 +50,7 @@ export class GameFrame extends Container {
     buttonSpin.interactive = true;  // This makes the button interactive
 
 
-    buttonSpin.on("click", handleInteraction, this);
-    buttonSpin.on("tap", handleInteraction, this);
-
-    function handleInteraction(this: any) {
+    const handleInteraction = () => {
       // Call the handleButton() method.
       this.handleButton();
 
@@ -66,11 +63,15 @@ export class GameFrame extends Container {
       }, 10000); // 10000 milliseconds = 10 seconds
     }
 
+    buttonSpin.on("click", handleInteraction, this);
+    buttonSpin.on("tap", handleInteraction, this);
 
 
   }
 
   private handleButton(): void {
+
+
     this.counter.updateMsg(1);
     this.reels.triggerAnimation(states["machine-state"][this.stateIndex].reels, () => {
       this.counter.updateMsg(2, states["machine-state"][this.stateIndex].win);

@@ -1,8 +1,8 @@
 ### Slot Machine
 
-![Game]("/slotMachine/ReadMeImages/ReadMe.png")
+![Game](/slotMachine/ReadMeImages/ReadMe.png)
 
-[Play it!]("https://slot-machine-git-deploymentvercel-albertoginel.vercel.app/")
+[Play it!](https://slot-machine-git-deploymentvercel-albertoginel.vercel.app/)
 
 ### Install and run
 
@@ -40,8 +40,8 @@ constructor(containerWidth: number, containerHeight: number, containerScale: num
     this.debugFrameImage.position.set(this.containerX, this.containerY);
 ```
 
-![tree diagram]("/slotMachine/ReadMeImages/tree.png")
+![tree diagram](/slotMachine/ReadMeImages/tree.png)
 
 A reel is made out of 4 symbol boxes that flow from bot to bottom, at the bottom they restart back to the top with a new symbol.
 
-![loop diagram]("/slotMachine/ReadMeImages/loop.png")
+![loop diagram](/slotMachine/ReadMeImages/loop.png)

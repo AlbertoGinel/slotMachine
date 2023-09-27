@@ -64,7 +64,6 @@ export class GameFrame extends Container {
 
   handleButton() {
     this.counter.updateMsg(1);
-    console.log('state Index: ', this.stateIndex);
     this.reels.triggerAnimation(states["machine-state"][this.stateIndex].reels, () => {
       this.counter.updateMsg(2, states["machine-state"][this.stateIndex].win);
     });

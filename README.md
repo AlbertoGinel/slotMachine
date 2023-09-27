@@ -1,6 +1,6 @@
 ### Slot Machine
 
-![Game](/slotMachine/ReadMeImages/ReadMe.jpeg)
+![Game]("/slotMachine/ReadMeImages/ReadMe.jpeg")
 
 [Play it!](https://slot-machine-git-deploymentvercel-albertoginel.vercel.app/)
 

@@ -1,13 +1,9 @@
 ### Slot Machine
 
-![Game](https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/ReadMe.jpeg | width=100)
 
 <picture>
-    <img src="https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/ReadMe.jpeg" alt="Game" width="200"/>
+    <img src="https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/ReadMe.jpeg" alt="Game" width="600"/>
 </picture>
-
-
-
 
 
 [Play it!](https://slot-machine-git-deploymentvercel-albertoginel.vercel.app/)
@@ -48,8 +44,25 @@ constructor(containerWidth: number, containerHeight: number, containerScale: num
     this.debugFrameImage.position.set(this.containerX, this.containerY);
 ```
 
-![tree diagram](https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/tree.jpeg | width=100)
+
+The order of spining cascades from GameFrame, this class contains the button, the counter and the ReelsCtrl.
+Pressing the button triggers updateMsg() to Counter and triggerAnimation(State,callback) (callback needed to update counter) in ReelsCtrl.
+
+ReelCtrl sends triggerAnimation() to the three reels, with the number of 3 seconds term before revealing.
+
+Reel has 4 symbols and its going to control them by adding animations to its timeline, there are 2 animations: basicSpining and stopSpining:
+basicSpining makes the symbols loop for 3 seconds.
+stopSpining sets the symbols as is determined by the state with a bouncing animation
+
+Symbols contains the function: changeSymbol(symbol: string) what is triggered at the top of the reel to give a random value to the symbol.
+
+<picture>
+    <img src="https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/tree.jpeg" alt="tree diagram" width="600"/>
+</picture>
 
 A reel is made out of 4 symbol boxes that flow from bot to bottom, at the bottom they restart back to the top with a new symbol.
 
-![loop diagram](https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/loop.jpeg | width=100)
+
+<picture>
+    <img src="https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/loop.jpeg" alt="loop diagram" width="150"/>
+</picture>

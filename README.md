@@ -2,6 +2,14 @@
 
 ![Game](https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/ReadMe.jpeg | width=100)
 
+<picture>
+    <img src="https://github.com/AlbertoGinel/slotMachine/blob/main/ReadMeImages/ReadMe.jpeg" alt="Game" width="200"/>
+</picture>
+
+
+
+
+
 [Play it!](https://slot-machine-git-deploymentvercel-albertoginel.vercel.app/)
 
 ### Install and run
